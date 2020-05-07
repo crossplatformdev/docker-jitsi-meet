@@ -1,4 +1,4 @@
-FROM arm64v8/debian:latest
+FROM arm64v8/debian:stable
 
 ARG JITSI_RELEASE=stable
 
