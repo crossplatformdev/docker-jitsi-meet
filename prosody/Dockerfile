@@ -6,10 +6,10 @@ ADD https://prosody.im/files/prosody-debian-packages.key /tmp/prosody.key
 RUN \
     apt-key add /tmp/prosody.key \
     && rm -f /tmp/prosody.key \
-    && echo "deb http://packages.prosody.im/debian stretch main" > /etc/apt/sources.list.d/prosody.list \
-    && apt-dpkg-wrap apt-get update \
-    && apt-dpkg-wrap apt-get install -y prosody \
-    && apt-dpkg-wrap apt-get install -t stretch-backports -y \
+    && echo "deb [arch=arm64] http://packages.prosody.im/debian stretch main" > /etc/apt/sources.list.d/prosody.list \
+    && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
+    && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y prosody \
+    && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -t stretch-backports -y \
       liblua5.2-dev \
       sasl2-bin \
       libsasl2-modules-ldap \
