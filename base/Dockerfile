@@ -14,7 +14,7 @@ RUN \
 	tar -zxvf /tmp/s6-overlay.tar.gz -C / && \
 	rm -f /tmp/*.tar.gz && \
 	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update && \
-	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https apt-utils ca-certificates gnupg && \
+	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https apt-utils ca-certificates gnupg wget && \
 	apt-key add /tmp/jitsi.key && \
 	rm -f /tmp/jitsi.key && \
 	sed -re "s/deb\s*http/deb [arch=arm64] http/g" /etc/apt/sources.list && \
