@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM arm64v8:debian
 
 ARG JITSI_RELEASE=stable
 
