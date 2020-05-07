@@ -12,6 +12,7 @@ RUN \
     && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -t stretch-backports -y \
       liblua5.2-dev \
       sasl2-bin \
+      libssl-dev \
       libsasl2-modules-ldap \
       libsasl2-dev \      
       lua-basexx \
@@ -30,7 +31,6 @@ RUN \
       gcc \
       luarocks \
       libsasl2-dev \
-      libssl-dev \
       liblua5.2-dev \
     && apt-cleanup \
     && rm -rf /etc/prosody /var/cache/apt
