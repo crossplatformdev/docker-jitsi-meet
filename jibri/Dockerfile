@@ -7,24 +7,24 @@ ARG CHROME_RELEASE=78.0.3904.97
 ARG CHROMEDRIVER_MAJOR_RELEASE=78
 
 RUN \
-	apt-dpkg-wrap apt-get update \
-	&& apt-dpkg-wrap apt-get install -y jibri \
+	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
+	&& LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y jibri \
 	&& apt-cleanup
 
 RUN \
 	[ "${CHROME_RELEASE}" = "latest" ] \
 	&& curl -4s https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
-	&& apt-dpkg-wrap apt-get update \
-	&& apt-dpkg-wrap apt-get install -y google-chrome-stable \
+	&& LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
+	&& LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y google-chrome-stable \
 	&& apt-cleanup \
 	|| true
 
 RUN \
         [ "${CHROME_RELEASE}" != "latest" ] \
         && curl -4so /tmp/google-chrome-stable_${CHROME_RELEASE}-1_amd64.deb http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_RELEASE}-1_amd64.deb \
-	&& apt-dpkg-wrap apt-get update \
-        && apt-dpkg-wrap apt-get install -y /tmp/google-chrome-stable_${CHROME_RELEASE}-1_amd64.deb \
+	&& LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
+        && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y /tmp/google-chrome-stable_${CHROME_RELEASE}-1_arm64.deb \
 	&& apt-cleanup \
 	|| true
 
@@ -38,8 +38,8 @@ RUN \
 	&& chromedriver --version
 
 RUN \
-        apt-dpkg-wrap apt-get update \
-        && apt-dpkg-wrap apt-get install -y jitsi-upload-integrations jq \
+        LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
+        && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y jitsi-upload-integrations jq \
         && apt-cleanup
 
 COPY rootfs/ /
