@@ -17,6 +17,7 @@ RUN \
 	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https apt-utils ca-certificates gnupg && \
 	apt-key add /tmp/jitsi.key && \
 	rm -f /tmp/jitsi.key && \
+	sed -re "s/deb\s*http/deb [arch=arm64] http/g" /etc/apt/sources.list && \
 	echo "deb [arch=arm64] https://download.jitsi.org $JITSI_RELEASE/" > /etc/apt/sources.list.d/jitsi.list && \
 	echo "deb [arch=arm64] http://ftp.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/backports.list && \
 	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update && \
