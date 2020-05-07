@@ -3,7 +3,8 @@ FROM ${JITSI_REPO}/base
 
 RUN	\
 	mkdir -p /usr/share/man/man1 && \
-	sed -re "s/deb\s*http/deb [arch=arm64] http/g" /etc/apt/sources.list && \
+	sed -re "s/deb\s*http/deb [arch=arm64] http/g" /etc/apt/sources.list && \	
+	wget -qO - https://download.jitsi.org/jitsi-key.gpg.key | apt-key add - && \
 	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update && \
 	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-11-jre libgl1 && \
 	apt-cleanup
