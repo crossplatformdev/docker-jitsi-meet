@@ -14,7 +14,7 @@ RUN \
 RUN \
 	[ "${CHROME_RELEASE}" = "latest" ] \
 	&& curl -4s https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-	&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+	&& echo "deb [arch=arm64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
 	&& LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
 	&& LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y google-chrome-stable \
 	&& apt-cleanup \
