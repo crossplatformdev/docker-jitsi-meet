@@ -10,4 +10,4 @@ COPY rootfs/ /
 
 #Place libjniwrapper in project's root directory
 COPY ./jnilib-1.0-SNAPSHOT.jar  /usr/share/jitsi-videobridge/lib/jnilib-1.0-SNAPSHOT.jar
-VOOLUME /config
+VOLUME /config
