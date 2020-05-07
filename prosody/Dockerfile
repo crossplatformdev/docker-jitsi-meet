@@ -26,7 +26,7 @@ RUN \
     && luarocks install lua-cjson 2.1.0-1 \
     && luarocks install luajwtjitsi 1.3-7 \
     && luarocks install net-url 0.9-1 \
-    && apt-dpkg-wrap apt-get remove -t stretch-backports -y \
+    && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get remove -t stretch-backports -y \
       git \
       gcc \
       luarocks \
@@ -37,8 +37,8 @@ RUN \
     && rm -rf /etc/prosody /var/cache/apt
 
 RUN \
-    apt-dpkg-wrap apt-get update \
-    && apt-dpkg-wrap apt-get -d install -y jitsi-meet-prosody \
+    LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update \
+    && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get -d install -y jitsi-meet-prosody \
     && dpkg -x /var/cache/apt/archives/jitsi-meet-prosody*.deb /tmp/pkg \
     && mv /tmp/pkg/usr/share/jitsi-meet/prosody-plugins /prosody-plugins \
     && apt-cleanup \
