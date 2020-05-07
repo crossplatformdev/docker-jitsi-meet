@@ -33,7 +33,7 @@ clean:
 	docker network prune
 
 prepare:
-	docker pull debian:stretch-slim
+	docker pull arm64v8:debian
 	FORCE_REBUILD=1 $(MAKE)
 
 .PHONY: all build tag push clean prepare
