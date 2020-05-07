@@ -13,8 +13,7 @@ RUN \
       liblua5.2-dev \
       sasl2-bin \
       libsasl2-modules-ldap \
-      libsasl2-dev \
-      libssl1.0-dev \
+      libsasl2-dev \      
       lua-basexx \
       lua-ldap \
       lua-sec \
