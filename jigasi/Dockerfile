@@ -4,8 +4,8 @@ FROM ${JITSI_REPO}/base-java
 ENV GOOGLE_APPLICATION_CREDENTIALS /config/key.json
 
 RUN \
-	apt-dpkg-wrap apt-get update && \
-	apt-dpkg-wrap apt-get install -y jigasi jq && \
+	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update && \
+	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y jigasi jq && \
 	apt-cleanup
 
 COPY rootfs/ /
