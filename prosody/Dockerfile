@@ -31,7 +31,7 @@ RUN \
       gcc \
       luarocks \
       libsasl2-dev \
-      libssl1.0-dev \
+      libssl-dev \
       liblua5.2-dev \
     && apt-cleanup \
     && rm -rf /etc/prosody /var/cache/apt
